@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+
+<title>Cinemas</title>
+
+<link href="../static/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+	<!-- page content -->
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>
+					All Cinemas <small>Gestion des cinemas</small>
+				</h2>
+
+				<div class="nav navbar-right panel_toolbox">
+					<a class="btn btn-round btn-success fa fa-plus" th:href=@{addCinema}> Add Cinema</a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+
+				<div class="table-responsive">
+					<form th:action="@{allcinemas}" method="get">
+						<div class="title_right">
+							<div class="col-md-5 col-sm-5   form-group pull-right top_search">
+								<div class="input-group">
+									<input type="text" name="motCle" class="form-control"
+										placeholder="Search for..."> <span
+										class="input-group-btn">
+										<button class="btn btn-default">Go!</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</form>
+					
+					<table class="table table-striped jambo_table bulk_action">
+						<thead>
+							<tr class="headings">
+								<th>
+									<div class="icheckbox_flat-green" style="position: relative;">
+										<input type="checkbox" id="check-all" class="flat"
+											style="position: absolute; opacity: 0;">
+										<ins class="iCheck-helper"
+											style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+									</div>
+								</th>
+								<th class="column-title" style="display: table-cell;">Id</th>
+								<th class="column-title" style="display: table-cell;">Name
+								</th>
+								<th class="column-title" style="display: table-cell;">Nombre de Salles
+								</th>
+								<th class="column-title no-link last"
+									style="display: table-cell;"><span class="nobr">Action</span>
+								</th>
+								<th class="bulk-actions" colspan="7" style="display: none;">
+									<a class="antoo" style="color: #fff; font-weight: 500;">Bulk
+										Actions ( <span class="action-cnt">1 Records Selected</span> )
+										<i class="fa fa-chevron-down"></i>
+								</a>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="even pointer" th:each="c:${cinemas}">
+								<td class="a-center ">
+									<div class="icheckbox_flat-green" style="position: relative;">
+										<input type="checkbox" class="flat" name="table_records"
+											style="position: absolute; opacity: 0;">
+										<ins class="iCheck-helper"
+											style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
+									</div>
+								</td>
+
+								<td th:text="${c.id}"></td>
+								<td th:text="${c.name}"></td>
+								<td th:text="${c.nombreSalles}">°</td>
+								<td><a th:href="@{editCinema(id=${c.id})}"  class="btn btn-success fa fa-edit" title="Edit">
+								  
+										Edit</a> / <a  class="btn btn-danger fa fa-trash" th:href="@{deleteCinema(cinemaId=${c.id},page=${currentPage},size=${size},motCle=${motCle})}">Delete</a></td>
+
+							</tr>
+
+						</tbody>
+					</table>
+					<div class="col-sm-7">
+						<div class="dataTables_paginate paging_simple_numbers"
+							id="datatable_paginate">
+							<ul class="pagination">
+								
+								<li class="paginate_button active" th:each="page,status:${pages}"><a 
+									aria-controls="datatable" th:class="${status.index==currentPage}?'btn btn-primary':'btn'"
+							th:href="@{allcinemas(page=${status.index},size=${size},motCle=${motCle})}"
+							th:text="${status.index}"></a></li>
+								
+								
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /page content -->
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" data-th-fragment="sidebar-menu" xmlns:th="http://www.thymeleaf.org">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Villes <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a data-th-href="@{addVille}">ADD</a></li>
+                      <li><a data-th-href="@{allvilles}">READ</a></li>
+          
+                    </ul>
+                  </li>
+                    <li><a><i class="fa fa-bank"></i> Cinemas <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a data-th-href="@{addCinema}">ADD</a></li>
+                      <li><a data-th-href="@{allcinemas}">READ</a></li>
+                   
+                    </ul>
+                  </li>
+                    <li><a><i class="fa fa-square"></i> Salles <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a data-th-href="@{addSalle}">ADD</a></li>
+                      <li><a data-th-href="@{allsalles}">READ</a></li>
+                   
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-film"></i> Films <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a data-th-href="@{addFilm}">ADD</a></li>
+                      <li><a data-th-href="@{allfilms}">READ</a></li>
+                   
+                    </ul>
+                  </li>
+                   <li><a><i class="fa fa-video-camera"></i> Projections <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a data-th-href="@{addProjection}">ADD</a></li>
+                      <li><a data-th-href="@{allprojections}">READ</a></li>
+                  
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>Sign out</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-sign-out red"></i> Log out <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                   
+                      <li><a th:href="@{/login?logout}">Log out</a></li>
+                    </ul>
+                  </li>
+                
+                </ul>
+              </div>
+
+            </div>
+            

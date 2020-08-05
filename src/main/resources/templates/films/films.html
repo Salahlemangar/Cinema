@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+<title>Cinemas</title>
+<link href="../static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+	<!-- page content -->
+
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>
+					All Films 
+				</h2>
+					<div class="nav navbar-right panel_toolbox">
+					<a class="btn btn-round btn-success fa fa-plus" th:href=@{addFilm}> Add Film</a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<div class="container">
+					<div class="row flex-column-reverse flex-md-row">
+						<div class="col-md-4 width-and-height" th:each="f:${films}">
+							<div class="card margin">
+								<div class="card-header">
+									<img class="width-and-height"
+										th:src="@{getPhoto(name=${f.photo})}"
+										alt="Card image"/>
+								</div>
+								<div class="card-body">
+									<h2 class="card-title" th:text="${f.titre}"></h2>
+									<div class="container">
+										<div class="row">
+											<div class="col-4 metadata">
+												<i class="fa fa-clock-o" aria-hidden="true" th:text="${f.duree}"></i>
+												<p>hour</p>
+											</div>
+											<div class="col-8 metadata" th:text="${f.categorie.name}"></div>
+										</div>
+									</div>
+								
+									
+									
+									<div>
+										<a th:href="@{editFilm(id=${f.id})}"  class="btn btn-success fa fa-edit" title="Edit">
+								  
+										Edit</a> / <a  class="btn btn-danger fa fa-trash" th:href="@{deleteFilm(filmId=${f.id})}">Delete</a>
+							            <a class="trailer-preview" href="https://youtu.be/ePbKGoIGAXY"
+										target="new"> <i class="fa fa-play" aria-hidden="true"> Trailer</i>
+									</a>
+							       </div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+</body>
+</html>
+

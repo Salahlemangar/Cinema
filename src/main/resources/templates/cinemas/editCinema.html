@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+
+<title>Cinema</title>
+
+</head>
+<body>
+
+	<!-- page content -->
+	<div class="right_col" role="main" data-layout-fragment="content">
+		<div class="">
+			<div class="page-title">
+				<div class="title_left">
+					<h3>Ajouter Cinemas</h3>
+				</div>
+
+				
+			</div>
+
+			<div class="clearfix"></div>
+
+			<div class="row">
+				<div class="col-md-12 col-sm-12  ">
+					<div class="x_panel">
+						<div class="x_title">
+							<h2>
+								Gestion Des Cinemas 
+							</h2>
+							<ul class="nav navbar-right panel_toolbox">
+								<li><a class="collapse-link"><i
+										class="fa fa-chevron-up"></i></a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false"><i class="fa fa-wrench"></i></a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a class="dropdown-item" href="#">Settings 1</a></li>
+										<li><a class="dropdown-item" href="#">Settings 2</a></li>
+									</ul></li>
+								<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+							</ul>
+							<div class="clearfix"></div>
+						</div>
+						<div class="x_content">
+							<br />
+							<form name="f" th:object="${cinema}" data-parsley-validate
+								class="form-horizontal form-label-left" th:action="@{saveCinema}" method="post">
+                                
+                                <div class="item form-group">
+									<label class="col-form-label col-md-3 col-sm-3 label-align"
+										for="last-name">ID <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 ">
+										<input type="text" id="id" name="id"
+											required="required" class="form-control" th:value="${cinema.id}">
+										<span th:errors="${cinema.id}"></span>	
+									</div>
+								</div>
+
+								<div class="item form-group">
+									<label class="col-form-label col-md-3 col-sm-3 label-align"
+										for="last-name">Name <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 ">
+										<input type="text" id="name" name="name"
+											required="required" class="form-control" th:value="${cinema.name}">
+										<span th:errors="${cinema.name}"></span>	
+									</div>
+								</div>
+								<div class="item form-group">
+									<label class="col-form-label col-md-3 col-sm-3 label-align"
+										for="last-name">Longitude <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 ">
+										<input type="text" id="longitude" name="longitude"
+											required="required" class="form-control" th:value="${cinema.longitude}">
+											<span th:errors="${cinema.longitude}"></span>
+									</div>
+								</div>
+								<div class="item form-group">
+									<label class="col-form-label col-md-3 col-sm-3 label-align"
+										for="last-name">Altitude <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 ">
+										<input type="text" id="altitude" name="altitude"
+											required="required" class="form-control" th:value="${cinema.altitude}">
+											<span th:errors="${cinema.altitude}"></span>
+									</div>
+								</div>
+								<div class="item form-group">
+									<label class="col-form-label col-md-3 col-sm-3 label-align"
+										for="last-name">Lattitude <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 ">
+										<input type="text" id="latitude" name="latitude"
+											required="required" class="form-control" th:value="${cinema.latitude}">
+											<span th:errors="${cinema.latitude}"></span>
+									</div>
+								</div>
+									<div class="item form-group">
+									<label class="col-form-label col-md-3 col-sm-3 label-align"
+										for="last-name">Nombre de Salles <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6 ">
+										<input type="text" id="lattitude" name="lattitude"
+											required="required" class="form-control" th:value="${cinema.nombreSalles}">
+											<span th:errors="${cinema.nombreSalles}"></span>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-form-label col-md-3 col-sm-3 label-align"
+										for="last-name">Ville <span class="required">*</span>
+									</label>
+									<div class="col-md-6 col-sm-6">
+										<select class="form-control" th:field="*{id}">
+											<option value="">Choose option</option>
+											<option th:each="ville:${villes}"
+											 th:value="${ville.id}"
+											 th:text="${ville.name}"/>
+											
+											
+										</select>
+									</div>
+								</div>
+								<div class="ln_solid"></div>
+								<div class="item form-group">
+									<div class="col-md-6 col-sm-6 offset-md-3">
+										<button class="btn btn-primary" type="button">Cancel</button>
+										<button class="btn btn-primary" type="reset">Reset</button>
+										<button type="submit" class="btn btn-success">Update</button>
+									</div>
+								</div>
+
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /page content -->
+
+
+</body>
+</html>
